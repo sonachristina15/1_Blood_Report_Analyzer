@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+
+# Environment variables / API keys
+.env
+
+# Generated files
+generated_reports/
+
+# Test/output files
+*.pdf

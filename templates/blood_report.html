@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Report Analyzer - AI Health</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blood_report.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">
+                    <div class="logo-icon">🏥</div>
+                    <div class="logo-text">AI Health</div>
+                </a>
+                <div class="nav-links">
+                    <a href="/" class="nav-link">← Back to Home</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="hero-icon">🩸</div>
+                    <h1>Blood Report Analyzer</h1>
+                    <p>Upload your blood test report and get AI-powered analysis with detailed insights and recommendations.</p>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section class="upload-section" id="uploadSection">
+                <div class="upload-card">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📄</div>
+                        <h3>Drop your blood report here</h3>
+                        <p>or <span class="browse-text">browse files</span></p>
+                        <input type="file" id="fileInput" accept="image/*,.pdf" hidden>
+                        <div class="file-types">
+                            <span>Supported: JPG, PNG, PDF</span>
+                        </div>
+                    </div>
+                    
+                    <div class="file-preview" id="filePreview" style="display: none;">
+                        <div class="preview-content">
+                            <div class="file-info">
+                                <div class="file-icon">📄</div>
+                                <div class="file-details">
+                                    <div class="file-name" id="fileName"></div>
+                                    <div class="file-size" id="fileSize"></div>
+                                </div>
+                            </div>
+                            <button class="remove-file" id="removeFile">×</button>
+                        </div>
+                        <button class="analyze-btn" id="analyzeBtn">
+                            <span class="btn-text">Analyze Report</span>
+                            <span class="btn-spinner" style="display: none;">⏳</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2>Analysis Results</h2>
+                    <button class="download-btn" id="downloadBtn">
+                        <span>📥 Download PDF Report</span>
+                    </button>
+                </div>
+
+                <!-- Patient Details -->
+                <div class="result-card" id="patientCard">
+                    <div class="card-header">
+                        <h3>👤 Patient Information</h3>
+                    </div>
+                    <div class="card-content" id="patientDetails">
+                        <!-- Patient details will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Blood Parameters -->
+                <div class="result-card" id="parametersCard">
+                    <div class="card-header">
+                        <h3>🧪 Blood Parameters</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="parameters-table" id="parametersTable">
+                            <!-- Parameters table will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="result-card" id="summaryCard">
+                    <div class="card-header">
+                        <h3>📋 Summary & Insights</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="summary-list" id="summaryList">
+                            <!-- Summary will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="result-card disclaimer-card">
+                    <div class="card-header">
+                        <h3>⚠️ Important Disclaimer</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="disclaimer-text" id="disclaimerText">
+                            <!-- Disclaimer will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Analyzing your blood report...</h3>
+            <p>This may take a few moments</p>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal" id="errorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ Error</h3>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage">An error occurred while processing your report.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="closeError">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/blood_report.js') }}"></script>
+</body>
+</html>
